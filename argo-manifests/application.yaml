@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: example-app
+spec:
+  destination:
+    name: ''
+    namespace: example-app
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: .
+    repoURL: 'git@github.com:GuardX10/example-helm-chart.git'
+    targetRevision: HEAD
+  project: example
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
